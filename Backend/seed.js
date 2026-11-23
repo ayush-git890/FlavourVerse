@@ -90,7 +90,7 @@ const recipesData = [
     image:
       "https://maayeka.com/wp-content/uploads/2023/12/broccoli-paneer-paratha-recipe-a.jpg",
     body: "Paneer Paratha is a delicious and popular Indian stuffed flatbread made with spiced paneer (Indian cottage cheese). It's a comforting and flavorful dish, perfect for breakfast or lunch. ",
-    author: "Mukul Singh",
+    author: "Recipe Community",
     CookingTime: "20 minutes",
     calories: "300 kcal",
     Ingredients: [
@@ -197,7 +197,7 @@ const blogSeedData = [
     title: "Special Paneer Parantha",
     image:
       "https://maayeka.com/wp-content/uploads/2023/12/broccoli-paneer-paratha-recipe-a.jpg",
-    author: "Mukul Singh",
+    author: "Recipe Community",
     body: "Paneer Paratha is a delightful and nutritious Indian flatbread stuffed with spiced paneer (Indian cottage cheese). It is a popular breakfast or lunch option, loved for its delicious taste and fulfilling nature.To make paneer paratha, a mixture of crumbled paneer, finely chopped onions, green chilies, coriander leaves, and spices like cumin, garam masala, and red chili powder is prepared. This flavorful mixture is then stuffed inside a dough made from whole wheat flour, water, and a pinch of salt. The stuffed dough is rolled out into flatbreads and cooked on a hot griddle with a little oil or ghee until golden brown and crispy on the outside.Paneer, being a good source of protein and calcium, makes paneer paratha a healthy and satisfying meal option. The combination of spices and herbs gives it a rich and aromatic flavor that is sure to tantalize your taste buds.",
     usermail: "jane.smith@example.com",
   },
