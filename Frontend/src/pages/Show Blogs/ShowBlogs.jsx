@@ -11,21 +11,30 @@ export const ShowBlogs = () => {
 
 
   const { id } = useParams();
-  const [data, setData] = useState("");
+  const [data, setData] = useState(null);
+  const [error, setError] = useState("");
 
   useEffect(() => {
+    let active = true;
     const fetchData = async () => {
       try {
-        if (!id) return;
-        const res = await axios.get(`${API_URL}/blog/${id}`);
-        setData(res.data);
+        const blog = (await axios.get(`${API_URL}/blog/${id}`)).data;
+        if (!blog) throw new Error("Blog not found");
+        if (active) setData(blog);
       } catch (error) {
-        console.log(error);
+        console.error("Unable to load blog", error);
+        if (active) setError("This blog could not be found or loaded.");
       }
     };
 
+    setData(null);
+    setError("");
     fetchData();
+    return () => { active = false; };
   }, [id]);
+
+  if (error) return <p role="alert" className="container my-4">{error}</p>;
+  if (!data) return <p role="status" className="container my-4">Loading blog...</p>;
 
   return (
     <div>

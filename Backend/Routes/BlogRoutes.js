@@ -10,7 +10,8 @@ router.get("/blog", async (req, res) => {
     console.log("sare blogs aa jynge");
     res.status(200).json(blog);
   } catch (e) {
-    res.status(400).json({ msg: "Something Went Wrong!!!" });
+    console.error("Unable to list blogs", e);
+    res.status(500).json({ msg: "Unable to load blogs" });
   }
 });
 

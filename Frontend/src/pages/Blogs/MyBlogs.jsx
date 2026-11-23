@@ -11,6 +11,7 @@ import { IoIosAddCircleOutline } from "react-icons/io";
 export const MyBlogs = ({ searchQuery }) => {
   const [blogs, setBlogs] = useState([]);
   const [filteredBlogs, setFilteredBlogs] = useState([]);
+  const [error, setError] = useState("");
   const navigate = useNavigate();
 
   function Redirect() {
@@ -28,7 +29,8 @@ export const MyBlogs = ({ searchQuery }) => {
       });
       setBlogs(res.data);
     } catch (e) {
-      console.log("Unable to fetch blogs");
+      console.error("Unable to fetch blogs", e);
+      setError("Blogs could not be loaded. Please try again later.");
     }
   }
 
@@ -102,6 +104,7 @@ export const MyBlogs = ({ searchQuery }) => {
         )} />
       </div>
 
+      {error && <p role="alert" className="text-center text-danger">{error}</p>}
       <div className="container" style={flexbox}>
         {filteredBlogs.map((blog) => {
           return <BCard key={blog._id} blog={blog} />;

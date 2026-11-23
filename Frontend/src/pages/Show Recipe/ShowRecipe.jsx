@@ -10,19 +10,31 @@ import axios from "axios";
 import ReviewRecipe from "../../Components/Reviews/ReviewRecipe";
 
 const ShowRecipe = () => {
-  const params = useParams();
+  const { id } = useParams();
 
-  const [recipe, setRecipe] = useState([]);
-
-  async function recipeDataFetcher() {
-    const res = await axios.get(`${API_URL}/recipe/${params.id}`);
-    console.log(res.data);
-    setRecipe(res.data);
-  }
+  const [recipe, setRecipe] = useState(null);
+  const [error, setError] = useState("");
 
   useEffect(() => {
+    let active = true;
+    async function recipeDataFetcher() {
+      try {
+        const data = (await axios.get(`${API_URL}/recipe/${id}`)).data;
+        if (!data) throw new Error("Recipe not found");
+        if (active) setRecipe(data);
+      } catch (error) {
+        console.error("Unable to load recipe", error);
+        if (active) setError("This recipe could not be found or loaded.");
+      }
+    }
+    setRecipe(null);
+    setError("");
     recipeDataFetcher();
-  }, []);
+    return () => { active = false; };
+  }, [id]);
+
+  if (error) return <p role="alert" className="container my-4">{error}</p>;
+  if (!recipe) return <p role="status" className="container my-4">Loading recipe...</p>;
 
   return (
     <>

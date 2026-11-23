@@ -138,8 +138,15 @@ Deploy the backend and the frontend as two separate Vercel projects from the sam
 
    Deploy and note the backend URL, for example `https://recipe-api.vercel.app`.
 4. **Frontend project:** import the same repository again with **Root Directory** `Frontend` (Framework: Vite). Add the variable `VITE_API_URL` set to the backend HTTPS URL from step 3 and deploy. Production builds require this variable; do not use `localhost`. Select the Production environment when adding it in Vercel. Changes to this variable require a new deployment because Vite embeds it at build time.
-5. Go back to the backend project, set `FRONTEND_URL` to the frontend URL and redeploy.
-6. **Load sample data (optional):** with `MONGO_URL` pointing at Atlas, run `node -e "require('mongoose').connect(process.env.MONGO_URL).then(async()=>{await require('./seed')();process.exit()})"` inside `Backend`, then sign up in the deployed app.
+5. Go back to the backend project, set `FRONTEND_URL` to the frontend URL and redeploy. If the frontend domain changes, update this value again. For the current frontend, use `https://flavour-verse-pi.vercel.app`.
+6. Open the backend's `/health` endpoint. It must return `{"status":"ok","database":"connected"}`. A `503` with `DATABASE_NOT_CONFIGURED` means `MONGO_URL` is missing from the backend environment. `DATABASE_UNAVAILABLE` means the connection failed: check Atlas database credentials, the connection string, and Network Access. Redeploy after changing Vercel environment variables. Do not share database passwords or connection strings in screenshots or logs.
+7. **Load sample data (optional):** from `Backend`, with `MONGO_URL` saved in `Backend/.env`, run:
+
+   ```powershell
+   node -r dotenv/config -e "require('mongoose').connect(process.env.MONGO_URL).then(async()=>{await require('./seed')();}).catch(error=>{console.error(error);process.exitCode=1;}).finally(()=>require('mongoose').disconnect())"
+   ```
+
+   Run this once per database; repeating it inserts duplicate sample content. Sign up in the deployed app to create your own account. Seeding the database does not create the local `tester` account.
 
 Notes: some browsers block cookies between two different `vercel.app` domains, which can break login. If that happens, attach a custom domain (for example `app.example.com` and `api.example.com`) to the two projects. The in-memory test account only exists in local `npm run dev`; on Vercel, sign up a new user.
 
@@ -149,6 +156,10 @@ Notes: some browsers block cookies between two different `vercel.app` domains, w
 - **CORS error in the browser console:** locally, use `localhost:5173` or `localhost:5174`. On Vercel, set the backend's `FRONTEND_URL` to your exact frontend origin (for example `https://flavour-verse-azure.vercel.app`) and redeploy the backend.
 - **Google login fails:** expected unless `GOOGLE_CLIENT_ID` and `GOOGLE_CLIENT_SECRET` are set.
 - **Accounts disappeared:** you are using the in-memory database (Option A); register again after each restart.
+
+## Validation
+
+From `Backend`, run `node --test index.test.js` to check database readiness, retry behavior, CORS preflight and anonymous authentication responses. The tests use a separate temporary MongoDB instance, not your Atlas database.
 
 ## Technologies Used
 

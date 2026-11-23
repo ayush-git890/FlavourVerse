@@ -10,7 +10,8 @@ router.get("/recipe", async (req, res) => {
     console.log("sare recipes aa jynge");
     res.status(200).json(recipe);
   } catch (e) {
-    res.status(400).json({ msg: "Something Went Wrong!!!" });
+    console.error("Unable to list recipes", e);
+    res.status(500).json({ msg: "Unable to load recipes" });
   }
 });
 

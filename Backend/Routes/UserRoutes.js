@@ -237,6 +237,11 @@ router.get("/login/success", (req, res) => {
       message: "successfull",
       user: req.user,
     });
+  } else {
+    res.status(401).json({
+      success: false,
+      message: "Not logged in",
+    });
   }
 });
 

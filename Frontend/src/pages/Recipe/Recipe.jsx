@@ -16,13 +16,15 @@ const Recipe = ({ searchQuery }) => {
 
   const [recipes, setRecipes] = useState([]);
   const [filteredRecipes, setFilteredRecipes] = useState([]);
+  const [error, setError] = useState("");
 
   async function getAllRecipes() {
     try {
       const res = await axios.get(`${API_URL}/recipe/`);
       setRecipes(res.data);
     } catch (e) {
-      console.log("Unable to fetch recipes");
+      console.error("Unable to fetch recipes", e);
+      setError("Recipes could not be loaded. Please try again later.");
     }
   }
 
@@ -95,6 +97,7 @@ const Recipe = ({ searchQuery }) => {
         )} />
       </div>
 
+      {error && <p role="alert" className="text-center text-danger">{error}</p>}
       <div className="container" style={flexbox}>
         {filteredRecipes.map((recipe) => {
           return <MyCard key={recipe._id} item={recipe} />;
