@@ -1,3 +1,4 @@
+import { API_URL } from "../../config.js";
 /* eslint-disable react/prop-types */
 import React, { useState, useEffect } from "react";
 import { MdGridOn } from "react-icons/md";
@@ -71,7 +72,7 @@ function Profile(props) {
   useEffect(() => {
     const fetchUserDetail = async () => {
       try {
-        const response = await axios.get(`http://localhost:5000/auth/profile/${id}`, {
+        const response = await axios.get(`${API_URL}/auth/profile/${id}`, {
           withCredentials: true,
           headers: {
             Accept: "application/json",
@@ -115,7 +116,7 @@ function Profile(props) {
     try {
       if (buttoncontent==="Following") {
         // Unfollow user
-        await axios.post(`http://localhost:5000/auth/unfollow/${id}`,currentuser, {
+        await axios.post(`${API_URL}/auth/unfollow/${id}`,currentuser, {
           withCredentials: true,
           headers: {
             Accept: "application/json",
@@ -126,7 +127,7 @@ function Profile(props) {
       } 
       else if (buttoncontent==="Follow"){
         // Follow user
-        await axios.post(`http://localhost:5000/auth/follow/${id}`,currentuser,{
+        await axios.post(`${API_URL}/auth/follow/${id}`,currentuser,{
           withCredentials: true,
           headers: {
             Accept: "application/json",

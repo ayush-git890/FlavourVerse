@@ -1,3 +1,4 @@
+import { API_URL } from "../../config.js";
 /* eslint-disable react/prop-types */
 import { useState } from "react";
 import { Link ,useNavigate } from "react-router-dom";
@@ -22,7 +23,7 @@ function MyNav(props) {
 
   const requestAcceptHAndler = async (user)=>{
     try{
-    await axios.get(`http://localhost:5000/auth/follow/accept/${user._id}`,{
+    await axios.get(`${API_URL}/auth/follow/accept/${user._id}`,{
       withCredentials: true,
       headers: {
         Accept: 'application/json',
@@ -40,7 +41,7 @@ function MyNav(props) {
 
   const requestdeclineHandler = async(user)=>{
     try{
-        await axios.get(`http://localhost:5000/auth/follow/decline/${user._id}`,{
+        await axios.get(`${API_URL}/auth/follow/decline/${user._id}`,{
         withCredentials: true,
         headers: {
           Accept: 'application/json',
@@ -61,7 +62,7 @@ function MyNav(props) {
     const fetchRequestedUser = async () => {
       try {
         const response = await axios.get(
-          "http://localhost:5000/auth/requesteduser",
+          `${API_URL}/auth/requesteduser`,
           {
             withCredentials: true,
             headers: {
@@ -81,7 +82,7 @@ function MyNav(props) {
 
   const logouthandler = () => {
     try {
-      window.open("http://localhost:5000/auth/logout", "_self");
+      window.open(`${API_URL}/auth/logout`, "_self");
     } catch (e) {
       console.log("logout button kam nhi kiya");
       console.log(e);

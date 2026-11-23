@@ -1,3 +1,4 @@
+import { API_URL } from "../../config.js";
 /* eslint-disable no-unused-vars */
 import React, { useState } from "react";
 import styles from "./Login.module.css";
@@ -18,7 +19,7 @@ const Login = () => {
   });
 
   const googlelogin = async () => {
-    window.open("http://localhost:5000/auth/google", "_self");
+    window.open(`${API_URL}/auth/google`, "_self");
   };
 
   const togglePasswordVisibility = () => {
@@ -54,7 +55,7 @@ const Login = () => {
     console.log("Role:", role);
     try {
 
-      const res = await axios.post("http://localhost:5000/auth/register", {
+      const res = await axios.post(`${API_URL}/auth/register`, {
         email,
         password,
         username,
@@ -84,7 +85,7 @@ const Login = () => {
     const { username, password } = formData;
 
     try {
-      const res = await axios.post("http://localhost:5000/auth/login", {
+      const res = await axios.post(`${API_URL}/auth/login`, {
         username,
         password
       },{

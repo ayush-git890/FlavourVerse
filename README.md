@@ -120,6 +120,29 @@ These credentials are for local testing only. With your own MongoDB (Option B) t
 | POST | `/auth/login` | Log in |
 | GET | `/auth/profile/:id` | User profile |
 
+## Deploying to Vercel
+
+Deploy the backend and the frontend as two separate Vercel projects from the same repository.
+
+1. **Database:** create a free cluster on [MongoDB Atlas](https://www.mongodb.com/atlas), add a database user, allow access from anywhere (`0.0.0.0/0`) under Network Access, and copy the connection string.
+2. **Push the code** to your own Git repository (GitHub, GitLab or Bitbucket).
+3. **Backend project:** in Vercel choose *Add New Project*, import the repository and set **Root Directory** to `Backend`. Add these environment variables:
+
+   | Name | Value |
+   | ---- | ----- |
+   | `MONGO_URL` | your Atlas connection string |
+   | `SESSION_SECRET` | any long random string |
+   | `FRONTEND_URL` | the frontend URL from step 4 (add it after the frontend is deployed, then redeploy) |
+   | `NODE_ENV` | `production` |
+   | `GOOGLE_CLIENT_ID` / `GOOGLE_CLIENT_SECRET` | optional, only for Google login |
+
+   Deploy and note the backend URL, for example `https://recipe-api.vercel.app`.
+4. **Frontend project:** import the same repository again with **Root Directory** `Frontend` (Framework: Vite). Add the variable `VITE_API_URL` set to the backend URL from step 3 and deploy.
+5. Go back to the backend project, set `FRONTEND_URL` to the frontend URL and redeploy.
+6. **Load sample data (optional):** with `MONGO_URL` pointing at Atlas, run `node -e "require('mongoose').connect(process.env.MONGO_URL).then(async()=>{await require('./seed')();process.exit()})"` inside `Backend`, then sign up in the deployed app.
+
+Notes: some browsers block cookies between two different `vercel.app` domains, which can break login. If that happens, attach a custom domain (for example `app.example.com` and `api.example.com`) to the two projects. The in-memory test account only exists in local `npm run dev`; on Vercel, sign up a new user.
+
 ## Troubleshooting
 
 - **Home page shows no recipes:** make sure the backend is running on port 5000.

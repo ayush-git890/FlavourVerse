@@ -12,8 +12,14 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
 const mongourl = process.env.MONGO_URL;
-// const mongourl = "mongodb://localhost:27017/recipeeee";
-const port = process.env.PORT;
+const port = process.env.PORT || 5000;
+const isProd = process.env.NODE_ENV === "production";
+const clientUrls = (process.env.FRONTEND_URL || "http://localhost:5173,http://localhost:5174")
+  .split(",")
+  .map((u) => u.trim().replace(/\/$/, ""));
+
+// Vercel sits behind a proxy; needed for secure cookies
+app.set("trust proxy", 1);
 
 mongoose
   .connect(mongourl)
@@ -23,8 +29,11 @@ mongoose
 app.use(
   cookieSession({
     name: "session",
-    keys: ["helloji"],
+    keys: [process.env.SESSION_SECRET || "helloji"],
     maxAge: 24 * 60 * 60 * 100,
+    // frontend and backend are on different domains in production
+    sameSite: isProd ? "none" : "lax",
+    secure: isProd,
   })
 );
 
@@ -33,7 +42,7 @@ app.use(passport.session());
 
 app.use(
   cors({
-    origin: ["http://localhost:5173", "http://localhost:5174"],
+    origin: clientUrls,
     methods: "GET,POST,PUT,DELETE",
     credentials: true, // Include credentials (cookies, authorization headers) in CORS requests
   })
@@ -57,6 +66,11 @@ app.use(RecipeRoutes);
 app.use("/auth", UserRoutes);
 
 // seedDB();
-app.listen(port, () => {
-  console.log("conected to port 5000");
-});
+// Vercel runs the exported app as a serverless function; only listen locally
+if (!process.env.VERCEL) {
+  app.listen(port, () => {
+    console.log(`Server running on port ${port}`);
+  });
+}
+
+module.exports = app;

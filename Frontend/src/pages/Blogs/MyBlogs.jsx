@@ -1,3 +1,4 @@
+import { API_URL } from "../../config.js";
 import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
@@ -18,7 +19,7 @@ export const MyBlogs = ({ searchQuery }) => {
 
   async function getAllBlogs() {
     try {
-      const res = await axios.get("http://localhost:5000/blog/", {
+      const res = await axios.get(`${API_URL}/blog/`, {
         withCredentials: true,
         headers: {
           Accept: "application/json",

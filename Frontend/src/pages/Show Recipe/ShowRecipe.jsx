@@ -1,3 +1,4 @@
+import { API_URL } from "../../config.js";
 import React, { useEffect, useState } from "react";
 import AboutRecipe from "../../Components/About Recipe/AboutRecipe";
 import MyNav from "../../Components/Navbar/MyNav";
@@ -14,7 +15,7 @@ const ShowRecipe = () => {
   const [recipe, setRecipe] = useState([]);
 
   async function recipeDataFetcher() {
-    const res = await axios.get(`http://localhost:5000/recipe/${params.id}`);
+    const res = await axios.get(`${API_URL}/recipe/${params.id}`);
     console.log(res.data);
     setRecipe(res.data);
   }

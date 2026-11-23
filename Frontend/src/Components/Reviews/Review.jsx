@@ -1,3 +1,4 @@
+import { API_URL } from "../../config.js";
 /* eslint-disable react/prop-types */
 import { FaUser } from "react-icons/fa";
 import React, { useState } from "react";
@@ -16,7 +17,7 @@ const Review = (props) => {
       if (comment.trim() == "") return;
 
       try {
-        await axios.post(`http://localhost:5000/blog/${id}/comment`, {
+        await axios.post(`${API_URL}/blog/${id}/comment`, {
           comment,
         },{
           withCredentials: true,

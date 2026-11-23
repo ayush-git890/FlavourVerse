@@ -1,3 +1,4 @@
+import { API_URL } from "../../config.js";
 import { useState, useEffect } from "react";
 import MyCard from "../../Components/Cards/MyCard";
 import SearchForm from "../../Components/Search Bar/SearchForm";
@@ -18,7 +19,7 @@ const Recipe = ({ searchQuery }) => {
 
   async function getAllRecipes() {
     try {
-      const res = await axios.get("http://localhost:5000/recipe/");
+      const res = await axios.get(`${API_URL}/recipe/`);
       setRecipes(res.data);
     } catch (e) {
       console.log("Unable to fetch recipes");

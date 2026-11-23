@@ -159,7 +159,7 @@ router.get("/follow/decline/:id", async (req, res) => {
 
 
 router.post('/login', passport.authenticate('local', { 
-  failureRedirect: 'http://localhost:5173/login',
+  failureRedirect: `${(process.env.FRONTEND_URL || "http://localhost:5173").split(",")[0].trim()}/login`,
 }), 
 (req, res) => {
   try
@@ -227,7 +227,8 @@ router.get("/profile/:id", async (req, res) => {
 
 
 
-const CLIENT_URL = "http://localhost:5173/";
+const CLIENT_URL =
+  (process.env.FRONTEND_URL || "http://localhost:5173").split(",")[0].trim().replace(/\/$/, "") + "/";
 
 router.get("/login/success", (req, res) => {
   if (req.user) {

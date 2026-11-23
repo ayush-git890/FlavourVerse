@@ -1,3 +1,4 @@
+import { API_URL } from "./config.js";
 import "bootstrap/dist/css/bootstrap.min.css";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import Recipe from "./pages/Recipe/Recipe";
@@ -22,7 +23,7 @@ const App = () => {
 
   useEffect(() => {
     const fetchUserInfo = () => {
-      fetch("http://localhost:5000/auth/login/success", {
+      fetch(`${API_URL}/auth/login/success`, {
         method: "GET",
         credentials: "include",
         headers: {

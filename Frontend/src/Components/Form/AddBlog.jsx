@@ -1,3 +1,4 @@
+import { API_URL } from "../../config.js";
 import React, { useState, useRef } from "react";
 import MyNav from "../Navbar/MyNav";
 import Footer from "../footer/Footer";
@@ -29,7 +30,7 @@ const AddBlog = () => {
   const onSubmitHandler = async (e) => {
     e.preventDefault();
     try {
-      await axios.post("http://localhost:5000/blog/add", formData, {
+      await axios.post(`${API_URL}/blog/add`, formData, {
       withCredentials: true,
       headers: {
         Accept: "application/json",

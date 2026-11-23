@@ -1,3 +1,4 @@
+import { API_URL } from "../../config.js";
 import  { useEffect, useState } from "react";
 import MyNav from "../../Components/Navbar/MyNav";
 import Footer from "../../Components/footer/Footer";
@@ -16,7 +17,7 @@ export const ShowBlogs = () => {
     const fetchData = async () => {
       try {
         if (!id) return;
-        const res = await axios.get(`http://localhost:5000/blog/${id}`);
+        const res = await axios.get(`${API_URL}/blog/${id}`);
         setData(res.data);
       } catch (error) {
         console.log(error);

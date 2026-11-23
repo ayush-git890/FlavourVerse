@@ -1,3 +1,4 @@
+import { API_URL } from "../../config.js";
 import React, { useState } from "react";
 import { MdOutlineStar } from "react-icons/md";
 import { FaUser } from "react-icons/fa";
@@ -13,7 +14,7 @@ const ReviewRecipe = (props) => {
       if (comment.trim() === "") return;
 
       try {
-        await axios.post(`http://localhost:5000/recipe/${id}/review`, {
+        await axios.post(`${API_URL}/recipe/${id}/review`, {
           comment,
         },{
           withCredentials: true,

@@ -1,3 +1,4 @@
+import { API_URL } from "../../config.js";
 import { useRef, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import MyNav from "../Navbar/MyNav";
@@ -34,7 +35,7 @@ const AddRecipe = () => {
   const onSubmitHandler = async (e) => {
     e.preventDefault();
     try {
-      await axios.post("http://localhost:5000/recipe/add", formData, {
+      await axios.post(`${API_URL}/recipe/add`, formData, {
       withCredentials: true,
       headers: {
         Accept: "application/json",

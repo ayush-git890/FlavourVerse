@@ -1,3 +1,4 @@
+import { API_URL } from "../../config.js";
 import React, { useEffect, useState } from "react";
 import axios from "axios";
 import HomeCard from "./HomeCard";
@@ -7,7 +8,7 @@ const HCard = () => {
 
   useEffect(() => {
     axios
-      .get("http://localhost:5000/recipe/")
+      .get(`${API_URL}/recipe/`)
       .then((res) => setRecipes(res.data.slice(0, 4)))
       .catch((err) => console.log(err));
   }, []);
