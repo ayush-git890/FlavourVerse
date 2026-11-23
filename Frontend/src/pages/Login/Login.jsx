@@ -67,7 +67,7 @@ const Login = () => {
         }
       })
       console.log(res.data);
-      window.location.href="http://localhost:5173/";
+      window.location.href=window.location.origin + "/";
       // navigate("winblogs")
 
     }
@@ -95,7 +95,7 @@ const Login = () => {
         }
       });
       console.log(res.data);
-      window.location.href="http://localhost:5173/";
+      window.location.href=window.location.origin + "/";
     } catch (error) {
       console.error("Error:", error.response.data.error);
       console.error("Login failed.");

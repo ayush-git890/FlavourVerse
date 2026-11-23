@@ -21,8 +21,9 @@ passport.deserializeUser(User.deserializeUser());
 passport.use(
   new GoogleStrategy(
     {
-      clientID: process.env.GOOGLE_CLIENT_ID,
-      clientSecret: process.env.GOOGLE_CLIENT_SECRET,
+      // Placeholders let the server boot without Google credentials (Google login then stays disabled)
+      clientID: process.env.GOOGLE_CLIENT_ID || "not-configured",
+      clientSecret: process.env.GOOGLE_CLIENT_SECRET || "not-configured",
       callbackURL: "/auth/google/callback",
     },
     async (req, accessToken, refreshToken, profile, done) => {
