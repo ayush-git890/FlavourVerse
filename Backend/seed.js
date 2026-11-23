@@ -6,7 +6,7 @@ const recipesData = [
     image:
       "https://t4.ftcdn.net/jpg/04/14/41/77/360_F_414417747_PncWOAXpLSMPuQSae7uXLmJGlGV41EOH.jpg",
     body: "Poha, also known as flattened rice or beaten rice, is a popular Indian breakfast dish that's simple yet flavorful. It's made from flattened, dehusked rice, which is then tempered with spices and often mixed with vegetables",
-    author: "Ajay Tyagi",
+    author: "Oliver Smith",
     CookingTime: "30 minutes",
     calories: "500 kcal",
     Ingredients: [
@@ -42,7 +42,7 @@ const recipesData = [
       "Sprinkle chopped fresh coriander leaves on top for garnish.",
       "Your Poha is ready to be served hot! Enjoy it as is or with sev, yogurt, or sliced tomatoes.",
     ],
-    usermail: "ajay@gmail.com",
+    usermail: "emily.carter@example.com",
     date: "24 April",
   },
   {
@@ -50,7 +50,7 @@ const recipesData = [
     image:
       "https://content.jdmagicbox.com/comp/noida/v8/011pxx11.xx11.190925042619.e8v8/catalogue/punjabi-chole-bhature-noida-sector-34-noida-north-indian-restaurants-2whbntunqe.jpg",
     body: "Chole Bhature is a beloved North Indian dish that consists of spicy chickpea curry (chole) paired with deep-fried bread (bhature). It's a popular street food and also served in restaurants across India",
-    author: "Rajat Gupta",
+    author: "Daniel Brooks",
     CookingTime: "45 minutes",
     calories: "600 kcal",
     Ingredients: [
@@ -82,7 +82,7 @@ const recipesData = [
       "Add 1 teaspoon amchur (dry mango powder) or anardana (pomegranate seed) powder, 1 teaspoon garam masala, and salt to taste.",
       "Garnish with fresh chopped coriander leaves (cilantro).",
     ],
-    usermail: "rajat@gmail.com",
+    usermail: "daniel.brooks@example.com",
     date: "24 April",
   },
   {
@@ -131,7 +131,7 @@ const recipesData = [
       "Cook until golden brown spots appear on both sides, pressing gently with a spatula.",
       "Repeat the same process for the remaining dough balls.",
     ],
-    usermail: "mukul@gmail.com",
+    usermail: "sophia.miller@example.com",
     date: "24 April",
   },
   {
@@ -139,7 +139,7 @@ const recipesData = [
     image:
       "https://vismaifood.com/storage/app/uploads/public/8b4/19e/427/thumb__1200_0_0_0_auto.jpg",
     body: "Dosa is a popular South Indian dish that's enjoyed not only in India but around the world. It's a thin, crispy, and savory crepe made from a fermented batter of rice and lentils.",
-    author: "Aditya Chauhan",
+    author: "James Walker",
     CookingTime: "25 minutes",
     calories: "700 kcal",
     Ingredients: [
@@ -171,7 +171,7 @@ const recipesData = [
       "Remove the dosa from the tava and serve hot.",
       "Repeat the process with the remaining batter, greasing the tava as needed.",
     ],
-    usermail: "aditya@gmail.com",
+    usermail: "james.walker@example.com",
     date: "24 April",
   },
 ];
@@ -181,7 +181,7 @@ const blogSeedData = [
     title: "Delicious Poha Recipe",
     image:
       "https://t4.ftcdn.net/jpg/04/14/41/77/360_F_414417747_PncWOAXpLSMPuQSae7uXLmJGlGV41EOH.jpg",
-    author: "Ajay Tyagi",
+    author: "Oliver Smith",
     body: "Poha, also known as flattened rice, is a popular Indian breakfast dish that is easy to prepare and incredibly versatile. Made from flattened rice flakes, poha is light, fluffy, and nutritious, making it a perfect breakfast option for people of all ages.To prepare poha, the rice flakes are typically rinsed to remove any impurities and then soaked briefly in water to soften them. They are then stir-fried with a mixture of spices, vegetables, and often peanuts or other nuts for added crunch and flavor. Common ingredients include onions, green chilies, curry leaves, mustard seeds, turmeric, and lemon juice, among others.One of the best things about poha is its adaptability. It can be customized to suit individual tastes and dietary preferences. For example, it can be made with or without onions, and you can add or omit vegetables based on what you have on hand. Poha can also be made vegan or vegetarian, depending on your choice of ingredients.Poha is not only delicious but also nutritious. It is a good source of carbohydrates, making it a great energy-boosting breakfast option. Additionally, it is low in calories and fat, making it a healthy choice for those looking to maintain or lose weight. Poha is also gluten-free, making it suitable for those with gluten intolerance or celiac disease.",
     usermail: "john.doe@example.com",
   },
@@ -189,7 +189,7 @@ const blogSeedData = [
     title: "Chole Bhature",
     image:
       "https://content.jdmagicbox.com/comp/noida/v8/011pxx11.xx11.190925042619.e8v8/catalogue/punjabi-chole-bhature-noida-sector-34-noida-north-indian-restaurants-2whbntunqe.jpg",
-    author: "Rajat Gupta",
+    author: "Daniel Brooks",
     body: "Chole Bhature is a beloved North Indian dish that combines spicy chickpea curry (chole) with deep-fried bread (bhature). It a flavorful and indulgent dish that is popular across India and is often enjoyed as a hearty breakfast or as a fulfilling meal.The chole, or chickpea curry, is made with a blend of aromatic spices such as coriander, cumin, turmeric, and garam masala, along with onions, tomatoes, and ginger-garlic paste. The chickpeas are simmered in this spicy gravy until they are tender and infused with the rich flavors of the spices.The bhature, on the other hand, are soft and fluffy deep-fried bread made from a dough of all-purpose flour, yogurt, and a leavening agent like baking powder or baking soda. The dough is rolled out into flat rounds and then deep-fried until they puff up and become golden brown and crispy on the outside.Chole Bhature is often served with a side of sliced onions, lemon wedges, and achar (Indian pickles) to complement the spicy and tangy flavors of the dish. It is a filling and satisfying meal that is perfect for special occasions or as a comforting treat on a lazy weekend morning.",
     usermail: "jane.smith@example.com",
   },
@@ -205,7 +205,7 @@ const blogSeedData = [
     title: "Dhokla",
     image:
       "https://nishamadhulika.com/imgpst/featured/chana_dal_chawal_dhokla.jpg",
-    author: "Aditya Chauhan",
+    author: "James Walker",
     body: "Dhokla is a popular Indian snack originating from the state of Gujarat. It is a savory steamed cake made from fermented batter, typically made from gram flour (besan) and sometimes rice flour. Dhokla is known for its light and fluffy texture, tangy flavor, and is often served as a snack or appetizer.To prepare dhokla, the batter is made by mixing gram flour with water, yogurt, and a combination of spices such as turmeric, ginger, and green chilies. This mixture is then fermented for several hours, which helps in making the dhokla soft and airy.Once the batter is fermented, it is poured into a greased pan or plate and steamed until it is cooked through. After steaming, the dhokla is cut into pieces and garnished with a tempering of mustard seeds, curry leaves, and green chilies fried in oil. It is then topped with a sprinkle of fresh coriander leaves and sometimes grated coconut.",
     usermail: "jane.smith@example.com",
   },
@@ -213,7 +213,7 @@ const blogSeedData = [
     title: "Dosa",
     image:
       "https://vismaifood.com/storage/app/uploads/public/8b4/19e/427/thumb__1200_0_0_0_auto.jpg",
-    author: "Ajay",
+    author: "Emily Carter",
     body: "Dosa is a popular South Indian dish that has gained worldwide fame for its delicious taste and unique texture. It is a type of thin, crispy pancake made from a fermented batter of rice and urad dal (black lentils), which gives it a slightly sour flavor and a light and airy texture.To make dosa, the rice and urad dal are soaked separately for several hours and then ground into a smooth batter. The batter is then fermented overnight or for a few hours, which helps in developing its characteristic flavor and texture. Once the batter is fermented, it is spread thinly on a hot griddle or skillet and cooked until it becomes crispy and golden brown. Dosa can be made plain or filled with a variety of fillings, such as spiced potatoes (masala dosa), cheese, or vegetables.Dosa is typically served with sambar, a flavorful lentil-based stew, and coconut chutney, which adds a creamy and slightly sweet contrast to the crispy dosa. It is also sometimes served with a spicy tomato chutney or a tangy tamarind chutney.",
     usermail: "jane.smith@example.com",
   },
