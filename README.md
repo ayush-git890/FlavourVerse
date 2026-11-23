@@ -137,7 +137,7 @@ Deploy the backend and the frontend as two separate Vercel projects from the sam
    | `GOOGLE_CLIENT_ID` / `GOOGLE_CLIENT_SECRET` | optional, only for Google login |
 
    Deploy and note the backend URL, for example `https://recipe-api.vercel.app`.
-4. **Frontend project:** import the same repository again with **Root Directory** `Frontend` (Framework: Vite). Add the variable `VITE_API_URL` set to the backend URL from step 3 and deploy.
+4. **Frontend project:** import the same repository again with **Root Directory** `Frontend` (Framework: Vite). Add the variable `VITE_API_URL` set to the backend HTTPS URL from step 3 and deploy. Production builds require this variable; do not use `localhost`. Select the Production environment when adding it in Vercel. Changes to this variable require a new deployment because Vite embeds it at build time.
 5. Go back to the backend project, set `FRONTEND_URL` to the frontend URL and redeploy.
 6. **Load sample data (optional):** with `MONGO_URL` pointing at Atlas, run `node -e "require('mongoose').connect(process.env.MONGO_URL).then(async()=>{await require('./seed')();process.exit()})"` inside `Backend`, then sign up in the deployed app.
 
@@ -145,8 +145,8 @@ Notes: some browsers block cookies between two different `vercel.app` domains, w
 
 ## Troubleshooting
 
-- **Home page shows no recipes:** make sure the backend is running on port 5000.
-- **CORS error in the browser console:** the frontend must run on `localhost:5173` or `localhost:5174`.
+- **Home page shows no recipes:** locally, make sure the backend is running on port 5000. On Vercel, verify `VITE_API_URL` points to your deployed backend and redeploy the frontend. Open the backend's `/recipe/` endpoint: it should return a JSON array, not HTML or a Vercel error. An empty array means the cloud database has no recipes yet; the local in-memory data is not transferred automatically.
+- **CORS error in the browser console:** locally, use `localhost:5173` or `localhost:5174`. On Vercel, set the backend's `FRONTEND_URL` to your exact frontend origin (for example `https://flavour-verse-azure.vercel.app`) and redeploy the backend.
 - **Google login fails:** expected unless `GOOGLE_CLIENT_ID` and `GOOGLE_CLIENT_SECRET` are set.
 - **Accounts disappeared:** you are using the in-memory database (Option A); register again after each restart.
 
