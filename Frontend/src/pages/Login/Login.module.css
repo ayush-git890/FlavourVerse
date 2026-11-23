@@ -1,0 +1,194 @@
+/* Original CSS code */
+
+/* Ensure proper box-sizing for all elements */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* Import font */
+/* @import url("https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap"); */
+
+/* Global styles */
+html,
+body {
+  font-family: "Poppins", sans-serif;
+  height: 100%;
+}
+
+a {
+  cursor: pointer;
+  text-decoration: none;
+  /* Ensure consistent link styling */
+}
+
+/* Ensure full coverage of background image */
+/* html {
+  background: url("https://img.freepik.com/free-photo/top-view-fresh-vegetables-various-spices-small-bowls-wooden-spoons-table-free-space_140725-147473.jpg") no-repeat center center fixed;
+  background-size: cover;
+} */
+
+/* Container styles */
+.container {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  max-width: 100%;
+  width: 350px;
+  /* Set a maximum width for better readability */
+  background: rgba(96, 95, 95, 0.596);
+  border-radius: 10px;
+  box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
+  overflow: hidden;
+}
+
+/* Form section styles */
+.container .forms {
+  display: flex;
+  flex-direction: column;
+  height: 65vh;
+  align-items: center;
+  padding: 30px;
+  transition: height 0.2s ease;
+  margin-top: 10px;
+}
+
+/* Individual form styles */
+.container .form {
+  width: 100%;
+  /* Occupy full width of container */
+  margin: 15px;
+  padding: 20px;
+  /* Increase padding for better spacing */
+}
+
+/* Title styles */
+.container .form .title {
+  font-size: 30px;
+  font-weight: 600;
+  color: #ffca3a;
+  margin-bottom: 20px;
+  /* Add spacing below title */
+}
+
+/* Input field styles */
+.inputField {
+  position: relative;
+  margin-bottom: 20px;
+  /* Add spacing between input fields */
+}
+
+.inputField input {
+  width: 100%;
+  height: 40px;
+  /* Reduce height for better proportion */
+  padding: 10px;
+  /* Adjust padding for better spacing */
+  border: none;
+  border-radius: 8px;
+  outline: none;
+  font-size: 16px;
+  border-bottom: 2px solid #ccc;
+  transition: all 0.2s ease;
+}
+
+.inputField input:focus,
+.inputField input:valid {
+  border-bottom-color: #ffca3a;
+}
+
+/* Checkbox text styles */
+.checkboxText {
+  display: flex;
+  align-items: center;
+  margin-bottom: 20px;
+  /* Add spacing below checkbox text */
+}
+
+.checkboxText .text {
+  margin-right: 10px;
+  /* Add spacing between text and checkbox */
+}
+
+/* Button styles */
+.form .text {
+  color: #ffffff;
+  font-size: 14px;
+}
+
+.form a.text {
+  color: #ffca3a;
+  text-decoration: none;
+}
+
+/* .form a:hover {
+  text-decoration: underline;
+} */
+
+.form button {
+  height: 100%;
+  width: 100%;
+  border: none;
+  color: black;
+  font-size: 17px;
+  font-weight: 500;
+  letter-spacing: 1px;
+  border-radius: 6px;
+  background-color: #ffca3a;
+  padding: 5px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+button:hover {
+  background-color: #ffd60a;
+}
+
+.form .loginSignup {
+  margin-top: 30px;
+  text-align: center;
+}
+
+/* Error animation styles */
+.error {
+  border: 2px solid red;
+  animation: shake 0.1s linear 10;
+}
+
+@keyframes shake {
+  0%,
+  100% {
+    transform: translateX(0);
+  }
+
+  25%,
+  75% {
+    transform: translateX(-5px);
+  }
+
+  50% {
+    transform: translateX(5px);
+  }
+}
+
+/* Media query for smaller screens */
+@media only screen and (max-width: 768px) {
+  .container {
+    width: 90%;
+    /* Adjust container width for smaller screens */
+  }
+
+  .inputField input {
+    height: 35px;
+    /* Reduce input field height for smaller screens */
+  }
+
+  .form button {
+    height: 35px;
+    /* Reduce button height for smaller screens */
+    font-size: 14px;
+    /* Reduce font size for smaller screens */
+  }
+}
