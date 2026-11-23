@@ -94,6 +94,17 @@ Open the URL printed by Vite (normally `http://localhost:5173`). If that port is
 4. Add your own recipes and blogs, review recipes, and comment on blogs.
 5. Visit other users' profiles to follow or unfollow them and manage follow requests from the navbar.
 
+## Test Login
+
+When started with `npm run dev` (Option A), a test account is created automatically on every start:
+
+| Field | Value |
+| ----- | ----- |
+| Username | `tester` |
+| Password | `Test@1234` |
+
+These credentials are for local testing only. With your own MongoDB (Option B) there is no default account, so sign up first.
+
 ## API Overview
 
 | Method | Route | Purpose |
